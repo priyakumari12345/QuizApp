@@ -1,14 +1,17 @@
-package com.priya.quizapp;
+package com.priya.quizapp.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
 @Data
 @Entity
+@Table(name="question")
 public class Question {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    @SequenceGenerator(name="ques_generator", sequenceName = "ques_seq", allocationSize=1)
     private Integer id;
     private String questionTitle;
     private String option1;
